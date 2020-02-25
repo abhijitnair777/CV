@@ -1,0 +1,8 @@
+<h2>WELCOME</h2>
+
+<% if logged_in? %>
+  <h3>You are Logged in as, <%= current_user.name %></h3>
+  <li><%= link_to "Create project", new_project_path, :class => "btn btn-outline-primary" %></li><br>
+  <li><%= link_to "Skill", new_skill_path, :class => "btn btn-outline-primary" %></li><br>
+  <li><%= link_to "Education Details", new_educations_path, :class => "btn btn-outline-primary" %></li>
+<%end%>

@@ -1,0 +1,16 @@
+<%= form_for @skill do |f| %>
+  <fieldset>
+    <legend>Skill</legend>
+    <div class="field">
+      <div class="small-6 columns">
+        <br><%= f.label :Skill %></br>
+        <%= f.text_field :skill_name %>
+      </div>
+      <div class="small-6 columns">
+       <br> <%= f.label :Description %></br>
+        <%= f.text_field :skill_description %>
+      </div>
+    </div>    
+    <%= f.submit "submit", class: 'button small radius' %>
+  </fieldset>
+<% end %>

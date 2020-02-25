@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light bg-light">
+  <div style="padding-bottom: 15px;">
+  <li><%= link_to "Home", users_path, :class => "btn btn-outline-primary" %></li>
+</div>
+  <form class="form-inline">
+    <% if logged_in? %>
+      <li><%= link_to "Logout", logout_sessions_path(:current_user), method: :delete, :class => "btn btn-outline-primary" %></li>
+      <div style="padding-left: 10px;">
+      <li><%= link_to "Update User Details", edit_user_path(current_user.id), :class => "btn btn-outline-primary" %></li>
+    <%else%>
+     <li><%= link_to "Login", new_sessions_path, :class => "btn btn-outline-primary" %></li>
+      <div style="padding-left: 10px;">
+      <li><%= link_to "Sign Up", new_user_path, :class => "btn btn-outline-primary" %></li>
+      </div>
+    </div>
+    <%end%>
+  </form>
+</nav>
+
+<div class="footer">
+  <div class="container text-center text-md-left">
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Build My Resume:</h5>
+        <p>Our easy resume builder allows you to construct a resume easily and with minimum effort</p>
+      </div>
+      <div class="col-md-3 mx-auto">
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Home</a>
+          </li>
+          <li>
+            <a href="#!">Contact US</a>
+          </li>
+          <li>
+            <a href="#!">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#!">Terms & Conditions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright text-center py-3">Copyright © 2020 All rights reserved.
+  </div>
+</div>
+

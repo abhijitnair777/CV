@@ -1,0 +1,24 @@
+<%= form_for Education.new do |f| %>
+  <p>
+    <%=f.label :Qualification %><br>
+    <%=f.select(:qualification_id,options_for_type) %>
+  </p>
+
+<div class="field">
+  <div class="small-6 columns">
+    <%= f.label :Institute_Name %></br>
+    <%= f.text_field :institute_name %>
+  </div>
+
+  <div class="small-6 columns">
+   </br><%= f.label :Percentage%></br>
+    <%= f.number_field :percentage%>
+  </div>
+
+    <div class="small-6 columns">
+    </br><%= f.label :Year_Of_Passing%></br>
+    <%= select_year(Date.current, start_year: 2016, end_year: Date.current.year)%>
+  </div>
+</div>
+</br><%= f.submit "Submit", class: 'button small radius' %>
+<% end %>

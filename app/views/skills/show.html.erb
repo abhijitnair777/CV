@@ -1,0 +1,18 @@
+<table>
+ 	<thead>
+ 		<tr>
+ 			<th> project_id </th>
+ 			<th> skill_name </th>
+ 			<th> skill_description </th>
+ 		</tr>
+ 	</thead>	
+ 	<tbody>
+    <% Skill.all.each do |skill| %>
+      <tr>
+        <td><%= skill.id%></td>
+        <td><%= skill.skill_name%></td>
+        <td><%= skill.skill_description%></td>
+      </tr>
+    <%end%>
+  </tbody>  	
+</table>

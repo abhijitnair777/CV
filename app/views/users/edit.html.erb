@@ -1,0 +1,39 @@
+<div class="container">   
+<%= form_for @user, url:{action: "update"} do |f| %>      
+ <%= "<div>#{@user.errors.full_messages.first}</div>".html_safe if @user.errors.any? %>   
+    <p>   
+     <div>   
+        <br><label>Name</label></br>
+        <%= f.text_field :name %>  
+     </div>   
+
+     <div>   
+        <br><label>Email</label></br>
+        <%= f.text_field :email %>   
+     </div>   
+        
+     <div>   
+        <br><label>Contact</label></br>
+        <%= f.text_field :contact %>
+     </div>
+
+     <div>   
+        <br><label>Address</label></br>
+        <%= f.text_field :address %>
+     </div>
+
+     <div>   
+        <br><label>City</label></br>
+        <%= f.text_field :city %>
+     </div>
+
+     <div>   
+        <br><label>Password</label></br>
+        <%= f.password_field :password %>   
+     </div>       
+    </p>   
+    <div>      
+      <%= f.submit 'Update User' %>   
+    </div>   
+<% end %>   
+</div>  

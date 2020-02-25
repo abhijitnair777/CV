@@ -1,0 +1,20 @@
+<table>
+ 	<thead>
+ 		<tr>
+ 			<th> project_id </th>
+ 			<th> project_name </th>
+ 			<th> Description </th>
+ 			<th> url </th>
+ 		</tr>
+ 	</thead>	
+ 	<tbody>
+    <% Project.all.each do |project| %>
+      <tr>
+        <td><%= project.id%></td>
+        <td><%= project.project_name%></td>
+        <td><%= project.description%></td>
+        <td><%= project.url%></td>
+      </tr>
+    <%end%>
+  </tbody>  	
+</table>

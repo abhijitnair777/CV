@@ -1,0 +1,20 @@
+<%= form_for @project do |f| %>
+  <fieldset>
+    <h1>Project</h1>
+    <div class="field">
+      <div class="small-6 columns">
+        <br><%= f.label :Project %></br>
+        <%= f.text_field :project_name %>
+      </div>
+      <div class="small-6 columns">
+       <br> <%= f.label :Description %></br>
+        <%= f.text_field :decription %>
+      </div>
+      <div class="small-6 columns">
+       <br> <%= f.label :URL %></br>
+        <%= f.text_field :url %>
+      </div>
+    </div>
+    <%= f.submit "submit", class: 'button small radius' %>
+  </fieldset>
+<% end %>
