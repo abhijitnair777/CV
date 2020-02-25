@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_131108) do
+ActiveRecord::Schema.define(version: 2020_02_25_084110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_131108) do
   create_table "projects", force: :cascade do |t|
     t.string "project_name"
     t.string "url"
-    t.string "decription"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_131108) do
     t.string "qualification_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.index ["users_id"], name: "index_qualifications_on_users_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -58,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_02_24_131108) do
     t.index ["resumes_id"], name: "index_skills_on_resumes_id"
   end
 
+  create_table "user_projects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_user_projects_on_project_id"
+    t.index ["user_id"], name: "index_user_projects_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -72,6 +83,9 @@ ActiveRecord::Schema.define(version: 2020_02_24_131108) do
 
   add_foreign_key "educations", "qualifications"
   add_foreign_key "educations", "resumes"
+  add_foreign_key "qualifications", "users", column: "users_id"
   add_foreign_key "resumes", "users", column: "users_id"
   add_foreign_key "skills", "resumes", column: "resumes_id"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
 end

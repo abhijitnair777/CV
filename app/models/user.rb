@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   require 'digest'
 
-  has_and_belongs_to_many :projects
+  has_many :projects, :through => :user_projects  
+  has_many :user_projects, :dependent => :destroy
   has_many :qualifications
   
 

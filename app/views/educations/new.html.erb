@@ -1,4 +1,4 @@
-<%= form_for Education.new do |f| %>
+<%= form_for @education do |f| %>
   <p>
     <%=f.label :Qualification %><br>
     <%=f.select(:qualification_id,options_for_type) %>
