@@ -8,7 +8,7 @@ class SkillsController < ApplicationController
     if @skill.save
       render :show
     else
-      render :new
+      render json: @skill.errors
     end
   end
 
@@ -24,6 +24,6 @@ class SkillsController < ApplicationController
   private
   
   def skill_params
-    params.require(:skill).permit(:skill_name, :skill_description)
+    params.require(:skill).permit(:skill_name, :skill_description, :resume_id)
   end	
 end

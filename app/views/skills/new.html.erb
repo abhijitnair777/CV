@@ -1,4 +1,5 @@
 <%= form_for @skill do |f| %>
+<div class="contentcontainer med left" style="margin-left: 10px;">
   <fieldset>
     <legend>Skill</legend>
     <div class="field">
@@ -9,8 +10,10 @@
       <div class="small-6 columns">
        <br> <%= f.label :Description %></br>
         <%= f.text_field :skill_description %>
+        <%= f.hidden_field :resume_id, :value => Resume.last.id%>
       </div>
     </div>    
     <%= f.submit "submit", class: 'button small radius' %>
   </fieldset>
+ </div> 
 <% end %>

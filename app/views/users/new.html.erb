@@ -2,37 +2,22 @@
   <h1 class="largeHeader">Sign up</h1>
 
     <div class="field">
-      <div class="small-6 columns">
-        <%= f.label :name %></br>
+      <div class="contentcontainer med left" style="margin-left: 10px;">
+        <br><%= f.label :name %></br>
         <%= f.text_field :name %>
-      </div>
-      <div class="small-6 columns">
-        <%= f.label :password %></br>
+        <br><%= f.label :password %></br>
         <%= f.password_field :password %>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="small-6 columns">
-        <%= f.label :Email%></br>
+        <br><%= f.label :Email%></br>
         <%= f.text_field :email%>
-      </div>
-      <div class="small-6 columns">
-         <%= f.label :contact%></br>
+        <br><%= f.label :contact%></br>
          <%= f.number_field :contact%>
-      </div>
-      <div class="small-6 columns">
-         <%= f.label :city%></br>
+        <br><%= f.label :city%></br>
          <%= f.text_field :city%>
-      </div>
-      <div>
-        <%= f.label :address%></br>
+      <br><%= f.label :address%></br>
         <%= f.text_field :address%>     
-      </div>
-      <div>
-        <%= f.label :DOB%></br>
+      <br><%= f.label :DOB%></br>
         <%= f.date_field :dob%>     
-      </div>
+    <br><%= f.submit "Register", class: 'button small radius' %>
+          </div>
     </div>
-    <%= f.submit "Register", class: 'button small radius' %>
 <% end %>

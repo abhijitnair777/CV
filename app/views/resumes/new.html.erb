@@ -1,0 +1,34 @@
+  <fieldset>
+    <%= form_for @resume do |f| %>
+    <legend>Objective</legend>
+    <div class="field">
+      <!-- <div class="objective"> -->
+        <div class="contentcontainer med left" style="margin-left: 10px;">
+        <br><%= f.label :Objective %></br>
+        <%= f.text_field :objective %>
+        <%= f.hidden_field :user_id, :value => current_user.id%>
+
+        <%= form_for :skills do |f| %>
+        <div class="small-6 columns">
+          <br><%= f.label :Skill %></br>
+          <%= f.text_field :skill_name %>
+        </div>
+        <div class="small-6 columns">
+          <br> <%= f.label :Skill_Description %></br>
+          <%= f.text_field :skill_description %>
+          <%= f.hidden_field :resume_id, :value => Resume.last.id%>
+        </div>
+        <% end %>
+
+        <%= form_for :achievements do |f| %>
+        <div class="small-6 columns">
+          <br><%= f.label :Achievement_description %></br>
+          <%= f.text_field :achievement_description %>
+        <%= f.hidden_field :resume_id, :value => Resume.last.id%>
+        </div>
+        <% end %> 
+
+        <%= f.submit "submit", class: 'button small radius' %>
+      </div>
+  </fieldset>
+<% end %>

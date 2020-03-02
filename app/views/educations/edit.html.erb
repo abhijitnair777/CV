@@ -1,5 +1,7 @@
-<%= form_for @education do |f| %>
 <div class="contentcontainer med left" style="margin-left: 10px;">
+<%= form_for @education, url:{action: "update"} do |f| %>      
+ <%= "<div>#{@education.errors.full_messages.first}</div>".html_safe if @education.errors.any? %>
+
   <p>
     <%=f.label :Qualification %><br>
     <%=f.select(:qualification_id, options_for_type) %>

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @project = Project.all
+    @projects = Project.all
   end
 
   def new
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
     if @project.save
       render :show
     else
-      render :new
+      render json: @project.errors
     end
   end
   
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @user = Project.find(params[:id])
+    @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
       redirect_to users_path
     else
@@ -34,13 +34,14 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
-    redirect_to users_path
+    redirect_to edit_project_path
   end
 
   private
   
   def project_params
-    params.require(:project).permit(:project_name, :description, :url)
+    params.require(:project).permit(:project_name, :description, :url, :user_id)
   end	
 end

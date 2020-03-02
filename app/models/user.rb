@@ -1,11 +1,10 @@
 class User < ApplicationRecord
   require 'digest'
 
-  has_many :projects, :through => :user_projects  
-  has_many :user_projects, :dependent => :destroy
-  has_many :qualifications
+  has_many :projects 
+  has_many :educations
+  has_many :resumes
   
-
   #EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
 
   # validates :name, :city, :address, presence: true
@@ -34,5 +33,5 @@ class User < ApplicationRecord
   def password!(authentication_password)
     self.password = authentication_password
     save!
-  end	
+  end
 end

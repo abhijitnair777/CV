@@ -1,3 +1,3 @@
 class Skill < ApplicationRecord
-  belongs_to :resumes
+  belongs_to :resume
 end

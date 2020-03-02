@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.password!(user_password[:password])
       session[:user_id] = @user.id
-      redirect_to users_path
+      redirect_to resumes_path
     else
       render :new
     end
@@ -32,6 +32,9 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  def show
+  end  
 
   private
 

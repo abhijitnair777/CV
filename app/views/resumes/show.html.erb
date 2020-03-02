@@ -1,0 +1,122 @@
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
+<%= stylesheet_link_tag "resumes"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+  <title><%= current_user.name%></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+</head>
+<body>
+
+<div id="doc2" class="yui-t7">
+  <div id="inner">
+  
+    <div id="hd">
+      <div class="yui-gc">
+        <div class="yui-u first">
+          <h1><%= current_user.name%></h1>
+          <h2>Web Designer, Director</h2>
+        </div>
+
+        <div class="yui-u">
+          <div class="contact-info">
+            <h3><a id="pdf" href="#">Download PDF</a></h3>
+            <h3><a href="mailto:name@yourdomain.com"></a><%=current_user.email%></a></h3>
+            <h3><%=current_user.contact%></h3>
+          </div><!--// .contact-info -->
+        </div>
+      </div><!--// .yui-gc -->
+    </div><!--// hd -->
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+
+          <div class="yui-gf">
+            <div class="yui-u first">
+              <h2>Objective</h2>
+            </div>
+            <div class="yui-u">
+              <p class="enlarge">
+                <%= current_user.resumes.last.objective%>
+                Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change. 
+              </p>
+            </div>
+          </div><!--// .yui-gf -->
+
+          <div class="yui-gf">
+            <div class="yui-u first">
+              <h2>Skills</h2>
+            </div>
+            <% current_user.resumes.last.skills.each do |skill| %>
+            <div class="yui-u">
+
+              <div class="talent">
+                <h2><%= skill.skill_name%></h2>
+                <p>Assertively exploit wireless initiatives rather than synergistic core competencies.</p>
+              </div>
+            </div>
+            <% end %>
+          </div><!--// .yui-gf -->
+
+          <div class="yui-gf">
+            <div class="yui-u first">
+              <h2>Hobby</h2>
+            </div>
+           
+            <div class="yui-u">
+              <ul class="talent">
+                <li>OS X</li>
+                <li>Windows XP/Vista</li>
+                <li class="last">Linux</li>
+              </ul>
+            </div>
+          </div><!--// .yui-gf-->
+
+          <div class="yui-gf">
+
+            <div class="yui-u first">
+              <h2>Project</h2>
+            </div><!--// .yui-u -->
+            <% current_user.projects.each do |project| %>
+
+            <div class="yui-u">
+
+              <div class="job">
+                <h2><%= project.project_name %></h2>
+                <h3><%=project.url %></h3>
+                <p><%=project.description %> </p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+
+          <div class="yui-gf last">
+            <div class="yui-u first">
+              <h2>Education</h2>
+            </div>
+            <% current_user.educations.each do |education| %>
+            <div class="yui-u">
+              <h2><%= education.institute_name %></h2>
+              <h3><%= education.qualification.qualification_type %> &mdash; <strong><%=education.percentage %> %</strong> </h3><br>
+            </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="ft">
+      <p><%=current_user.name%> &mdash; <a href="mailto:name@yourdomain.com"><%=current_user.email%></a> &mdash; <%=current_user.contact%></p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

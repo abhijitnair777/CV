@@ -1,0 +1,6 @@
+<% if logged_in? %>
+  <h3>You are Logged in as, <%= current_user.name %></h3>
+  <li><%= link_to "Create resume", new_resume_path, :class => "btn btn-outline-primary" %></li><br>
+  <li><%= link_to "View resume", view_user_resumes_resume_path(current_user.id), :class => "btn btn-outline-primary" %></li><br>
+  <li><%= link_to "Education Details", new_education_path, :class => "btn btn-outline-primary" %></li>
+<%end%>

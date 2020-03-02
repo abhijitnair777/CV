@@ -1,0 +1,20 @@
+<table>
+  <thead>
+     <div class="contentcontainer med left" style="margin-left: 10px;">
+    <tr>
+      <th> Resume_id </th>
+      <th>  Objective </th>
+    </tr>
+  </thead>  
+  <tbody>
+    <% current_user.resumes.all.each do |resume| %>
+      <tr>
+        <td><%= resume.id%></td>
+        <td><%= resume.objective%></td>
+        <td><%= link_to "View", resume_path(resume.id), method: :get, :class => "btn btn-outline-primary" %></td>
+        <td><%= link_to "delete", resume_path(resume.id), method: :delete, :class => "btn btn-outline-primary" %></td>
+      </tr>
+    <%end%>
+    </div>
+  </tbody>    
+</table>

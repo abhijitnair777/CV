@@ -10,21 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_084110) do
+ActiveRecord::Schema.define(version: 2020_03_02_110006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
+    t.bigint "resume_id", null: false
+    t.text "achievement_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["resume_id"], name: "index_achievements_on_resume_id"
+  end
 
   create_table "educations", force: :cascade do |t|
     t.string "institute_name"
     t.date "year_of_passing"
     t.decimal "percentage"
-    t.bigint "resume_id", null: false
     t.bigint "qualification_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["qualification_id"], name: "index_educations_on_qualification_id"
-    t.index ["resume_id"], name: "index_educations_on_resume_id"
+    t.index ["user_id"], name: "index_educations_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -33,40 +41,31 @@ ActiveRecord::Schema.define(version: 2020_02_25_084110) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
     t.string "qualification_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_qualifications_on_users_id"
   end
 
   create_table "resumes", force: :cascade do |t|
     t.string "objective"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_resumes_on_users_id"
+    t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
     t.string "skill_name"
     t.string "skill_description"
-    t.bigint "resumes_id", null: false
+    t.bigint "resume_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["resumes_id"], name: "index_skills_on_resumes_id"
-  end
-
-  create_table "user_projects", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_user_projects_on_project_id"
-    t.index ["user_id"], name: "index_user_projects_on_user_id"
+    t.index ["resume_id"], name: "index_skills_on_resume_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,11 +80,10 @@ ActiveRecord::Schema.define(version: 2020_02_25_084110) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "achievements", "resumes"
   add_foreign_key "educations", "qualifications"
-  add_foreign_key "educations", "resumes"
-  add_foreign_key "qualifications", "users", column: "users_id"
-  add_foreign_key "resumes", "users", column: "users_id"
-  add_foreign_key "skills", "resumes", column: "resumes_id"
-  add_foreign_key "user_projects", "projects"
-  add_foreign_key "user_projects", "users"
+  add_foreign_key "educations", "users"
+  add_foreign_key "projects", "users"
+  add_foreign_key "resumes", "users"
+  add_foreign_key "skills", "resumes"
 end

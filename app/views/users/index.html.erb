@@ -1,8 +1,10 @@
 <h2>WELCOME</h2>
-
 <% if logged_in? %>
+<div class="contentcontainer med left" style="margin-left: 10px;">
   <h3>You are Logged in as, <%= current_user.name %></h3>
   <li><%= link_to "Create project", new_project_path, :class => "btn btn-outline-primary" %></li><br>
   <li><%= link_to "Skill", new_skill_path, :class => "btn btn-outline-primary" %></li><br>
-  <li><%= link_to "Education Details", new_educations_path, :class => "btn btn-outline-primary" %></li>
+    <li><%= link_to "Hobbies", new_hobby_path, :class => "btn btn-outline-primary" %></li><br>
+  <li><%= link_to "Generate resume", resume_path(current_user.id), :class => "btn btn-outline-primary" %></li><br>
+</div> 
 <%end%>

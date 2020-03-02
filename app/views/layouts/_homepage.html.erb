@@ -1,12 +1,23 @@
 <nav class="navbar navbar-light bg-light">
   <div style="padding-bottom: 15px;">
-  <li><%= link_to "Home", users_path, :class => "btn btn-outline-primary" %></li>
+  <li><%= link_to "Home", resumes_path, :class => "btn btn-outline-primary" %></li>
 </div>
   <form class="form-inline">
     <% if logged_in? %>
-      <li><%= link_to "Logout", logout_sessions_path(:current_user), method: :delete, :class => "btn btn-outline-primary" %></li>
-      <div style="padding-left: 10px;">
       <li><%= link_to "Update User Details", edit_user_path(current_user.id), :class => "btn btn-outline-primary" %></li>
+    </div>
+
+      <div style="padding-left: 10px;">
+         <li><%= link_to "Update Education Details", edit_education_path(current_user.educations.ids), :class => "btn btn-outline-primary" %></li>
+      </div>
+
+      <div style="padding-left: 10px;">
+       <li><%= link_to "Update Project Details", project_path(current_user.id), :class => "btn btn-outline-primary" %></li>
+     </div>
+
+      <li><%= link_to "Logout", logout_sessions_path(:current_user), method: :delete, :class => "btn btn-outline-primary" %></li>
+    <div style="padding-left: 10px;">
+
     <%else%>
      <li><%= link_to "Login", new_sessions_path, :class => "btn btn-outline-primary" %></li>
       <div style="padding-left: 10px;">
@@ -36,14 +47,10 @@
           <li>
             <a href="#!">Privacy Policy</a>
           </li>
-          <li>
-            <a href="#!">Terms & Conditions</a>
-          </li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="footer-copyright text-center py-3">Copyright © 2020 All rights reserved.
+  <div class="footer-copyright text-center py-2">Copyright © 2020 All rights reserved.
   </div>
 </div>
-

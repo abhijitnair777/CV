@@ -1,5 +1,6 @@
-<%= form_for @project do |f| %>
 <div class="contentcontainer med left" style="margin-left: 10px;">
+ <%= form_for @project, url:{action: "update"} do |f| %>      
+ <%= "<div>#{@project.errors.full_messages.first}</div>".html_safe if @project.errors.any? %>  
   <fieldset>
     <h1>Project</h1>
     <div class="field">
