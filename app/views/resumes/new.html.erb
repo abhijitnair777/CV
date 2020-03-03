@@ -7,28 +7,23 @@
         <br><%= f.label :Objective %></br>
         <%= f.text_field :objective %>
         <%= f.hidden_field :user_id, :value => current_user.id%>
-
-        <%= form_for :skills do |f| %>
-        <div class="small-6 columns">
-          <br><%= f.label :Skill %></br>
-          <%= f.text_field :skill_name %>
-        </div>
-        <div class="small-6 columns">
-          <br> <%= f.label :Skill_Description %></br>
-          <%= f.text_field :skill_description %>
-          <%= f.hidden_field :resume_id, :value => Resume.last.id%>
-        </div>
+        
         <% end %>
 
-        <%= form_for :achievements do |f| %>
-        <div class="small-6 columns">
-          <br><%= f.label :Achievement_description %></br>
-          <%= f.text_field :achievement_description %>
-        <%= f.hidden_field :resume_id, :value => Resume.last.id%>
-        </div>
-        <% end %> 
 
-        <%= f.submit "submit", class: 'button small radius' %>
+<%= form_with model: @skills, local: true do |f| %>
+    ...
+    <fieldset>
+        <legend>Skills</legend>
+        <%= f.fields_for :skills do |skills_form| %>
+        
+       <%= render "skill_field", f: skills_form %>
+
+        <% end %>
+        <%= link_to_add_fields "Add Skills", f, :skills %>
+    </fieldset>
+
+    <%= f.submit "submit", class: 'button small radius' %>
       </div>
   </fieldset>
 <% end %>
