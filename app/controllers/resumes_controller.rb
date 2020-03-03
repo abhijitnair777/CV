@@ -5,6 +5,7 @@ class ResumesController < ApplicationController
 
   def new
     @resume = Resume.new
+    @resume.skills.build
   end
 
   def create

@@ -10,7 +10,7 @@ class EducationsController < ApplicationController
   def create
     @education = Education.new(education_params)
     if @education.save
-      render :show
+      render :new
     else
       render json: @education.errors
     end

@@ -1,29 +1,21 @@
-  <fieldset>
-    <%= form_for @resume do |f| %>
-    <legend>Objective</legend>
-    <div class="field">
-      <!-- <div class="objective"> -->
-        <div class="contentcontainer med left" style="margin-left: 10px;">
-        <br><%= f.label :Objective %></br>
-        <%= f.text_field :objective %>
-        <%= f.hidden_field :user_id, :value => current_user.id%>
-        
-        <% end %>
-
-
-<%= form_with model: @skills, local: true do |f| %>
-    ...
-    <fieldset>
-        <legend>Skills</legend>
-        <%= f.fields_for :skills do |skills_form| %>
-        
-       <%= render "skill_field", f: skills_form %>
-
-        <% end %>
-        <%= link_to_add_fields "Add Skills", f, :skills %>
-    </fieldset>
-
-    <%= f.submit "submit", class: 'button small radius' %>
-      </div>
-  </fieldset>
+<fieldset>
+<%= form_with(model: @resume, local: true) do |form| %>
+  
+  <div class="field">
+  <legend>Objective</legend>
+      <br><%= form.label :Objective %>
+      <%= form.text_field :objective %></br>
+      <%= form.hidden_field :user_id, :value => current_user.id%></br>  
+  
+  <%= form.fields_for :skills do |s| %>
+  <legend>Skills</legend>
+    <%= s.label :skill_name %>
+    <%= s.text_field :skill_name %></br>
+    <%= s.label :skill_description %>
+    <%= s.text_field :skill_description %></br>
+    <%= s.submit "Add skill", :type =>  "button",:onclick => 'addFields'%> </br>
+  <% end %>
+   <%= form.submit "submit", class: 'button small radius' %>
+ </div>
 <% end %>
+</fieldset>

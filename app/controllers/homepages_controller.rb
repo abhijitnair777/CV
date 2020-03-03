@@ -1,6 +1,6 @@
 class HomepagesController < ApplicationController
-  skip_before_action :authenticate, only: %i[welcome]
+  skip_before_action :authenticate_user!
   
   def welcome
-  end		
+  end
 end
