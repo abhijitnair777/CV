@@ -1,0 +1,12 @@
+console.log("hello from <%= @resume.id %>!");
+
+$('li#add-skill').before(
+  $('li').
+    attr('class', 'skill').
+    <%= fields_for @skill do |rd| %>
+      append('<%= rd.label :skill_name %>').
+      append('<%= rd.text_field :skill_name %>')
+      append('<%= rd.label :skill_description %>').
+      append('<%= rd.text_field :skill_description %>')
+    <% end %>
+);

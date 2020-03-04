@@ -1,11 +1,17 @@
 <h1>Welcome</h1>
+<div class="contentcontainer med left" style="margin-left: 15px;">
 <% if user_signed_in? %>
-  <div class="contentcontainer med left" style="margin-left: 10px;">
-  <h3>You are Logged in as, <%= current_user.name %></h3>
-  <li><%= link_to "Create project", new_project_path, :class => "btn btn-outline-primary" %></li><br>
-  <li><%= link_to "Skill", new_skill_path, :class => "btn btn-outline-primary" %></li><br>
-    <li><%= link_to "Hobbies", new_hobby_path, :class => "btn btn-outline-primary" %></li><br>
-  <li><%= link_to "Generate resume", resume_path(current_user.id), :class => "btn btn-outline-primary" %></li><br>
-</div> 
 <%end%>
+<h1 class="text-center">Easy Resume Builder</h1><br>
+<div class="text-center">
+  <h5 class="font-weight-bold">Answer a few questions about your background, skills and achievements,<br>and let our Resume Builder do the rest. Start today for free!</h5><br>
+</div>
 
+<div class="text-center">
+  <h5 class="font-weight-light">- Helps you to write a personalized/customized resume</h5><br>
+</div>
+
+<div class="text-center">
+  <%= link_to "Build My Resume", new_user_session_path, :class => "btn btn-primary" %><br>
+</div>
+</div> 

@@ -1,0 +1,23 @@
+<%= form_for(@resume) do |f| %>
+<div class="card">
+<div class="contentcontainer med left" style="margin-left: 10px; margin-bottom: 10%;">
+  <div class="form-inputs">
+    <h3><%= f.label :Objective %><br></h3>
+    <%= f.text_field :objective %>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+  </div>
+
+  <%= f.fields_for :skills do |builder| %>
+    <%= render 'skill', f: builder %>
+  <% end %>
+
+  <%= link_to_add_row('Add Skill', f, :skills, class: 'btn btn-primary') %>
+
+   <%= link_to_add_achievement('Add Achievement', f, :achievements, class: 'btn btn-primary') %>
+
+  <div class="form-actions">
+    <br><%= f.button :Generate_Resume %>
+  </div>
+<% end %>
+</div>
+</div>

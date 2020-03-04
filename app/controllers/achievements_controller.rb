@@ -1,10 +1,14 @@
 class AchievementsController < ApplicationController
+  def index
+    @achievements = Achievement.all
+  end
+
   def new
     @achievement = Achievement.new
   end
 
   def create
-    @achievement = Achievement.new(hobby_params)
+    @achievement = Achievement.new(achievement_params)
     if @achievement.save
       render :show
     else

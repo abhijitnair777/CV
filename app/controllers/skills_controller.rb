@@ -1,10 +1,12 @@
 class SkillsController < ApplicationController
+  before_action :set_skill
+
   def index
     @skills = Skill.all
   end
   
   def new
-    @skill = Skill.new
+    @skill = @resume.skills.build
   end
 
   def create
@@ -29,5 +31,10 @@ class SkillsController < ApplicationController
   
   def skill_params
     params.require(:skill).permit(:skill_name, :skill_description, :resume_id)
-  end	
+  end
+
+  def set_skill
+    @skill = Skill.find(params[:skill_id])
+  end
+
 end

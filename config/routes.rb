@@ -9,11 +9,12 @@ Rails.application.routes.draw do
       get :view_user_resumes
       delete :destroy
     end
+
+    resources :skills
   end 
   
   resources :projects
   
-  resources :skills
 
   resources :hobbies
 

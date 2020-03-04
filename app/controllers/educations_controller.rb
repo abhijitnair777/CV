@@ -17,13 +17,13 @@ class EducationsController < ApplicationController
   end
 
   def edit
-    @education = Education.find(params[:id])
+    @education = Education.find_by_user_id(params[:id])
   end
 
   def update
-    @education = Education.find(params[:id])
+    @education = Education.find_by_user_id(params[:id])
     if @education.update_attributes(education_params)
-      redirect_to users_path
+      redirect_to education_path
     else
       render :edit
     end
@@ -33,6 +33,6 @@ class EducationsController < ApplicationController
   
   def education_params
     params.require(:education).permit(:institute_name, 
-    :year_of_passing, :percentage, :qualification_id, :user_id)
+    :year_of_passing, :percentage, :user_id, :qualification_id)
   end
 end

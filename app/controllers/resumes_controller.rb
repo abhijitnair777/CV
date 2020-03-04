@@ -6,12 +6,13 @@ class ResumesController < ApplicationController
   def new
     @resume = Resume.new
     @resume.skills.build
+    @resume.achievements.build
   end
 
   def create
     @resume = Resume.new(resume_params)
     if @resume.save
-      redirect_to users_path
+      render :show
     else
       render json: @resume.errors
     end
@@ -30,6 +31,9 @@ class ResumesController < ApplicationController
   private
   
   def resume_params
-    params.require(:resume).permit(:objective, :user_id, skills_attributes: [:id, :skill_name, :skill_description, :_destroy])
+    params.require(:resume).permit(:objective, :user_id, 
+    skills_attributes: [:id, :skill_name, :skill_description, 
+    :_destroy], achievements_attributes: [:id, :achievement_description, 
+    :_destroy])
   end
 end

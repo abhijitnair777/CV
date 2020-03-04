@@ -1,0 +1,13 @@
+<%= f.hidden_field :_destroy, as: :hidden %>
+  
+<div class="field">
+   <br><h3>Skills</h3>
+  <br><%= f.label :Skill_name %><br>
+  <%= f.text_field :skill_name, label: false %><br>
+
+  <%= f.label :Skill_description %><br>
+  <%= f.text_field :skill_description, label: false %><br>
+  
+  <%= f.hidden_field :resume_id, :value => Resume.last.id%>
+  <%= link_to 'Delete', '#', class: 'remove_record' %>
+</div>
