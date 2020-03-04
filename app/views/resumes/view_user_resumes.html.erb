@@ -1,20 +1,24 @@
-  <div class="contentcontainer med left" style="margin-left: 10px;">
-<table>
-  <thead>
-    <tr>
-      <th> Resume_id </th>
-      <th>  Objective </th>
-    </tr>
-  </thead>  
-  <tbody>
-    <% current_user.resumes.all.each do |resume| %>
+<div class="contentcontainer med left" style="margin-left: 10px;">
+<% if current_user.resumes.count > 0 %>   
+  <table style = "width: 100%;">
+    <thead>
       <tr>
-        <td><%= resume.id%></td>
-        <td><%= resume.objective%></td>
-        <td><%= link_to "View", resume_path(resume.id), method: :get, :class => "btn btn-outline-primary" %></td>
-        <td><%= link_to "delete", resume_path(resume.id), method: :delete, :class => "btn btn-outline-primary" %></td>
+        <th> Resume_id </th>
+        <th> Objective </th>
       </tr>
-    <%end%>
-  </tbody>    
-</table>
+    </thead>  
+    <tbody>
+      <% current_user.resumes.all.each do |resume| %>
+        <tr>
+          <td><%= resume.id%></td>
+          <td><%= resume.objective%></td>
+          <td><%= link_to "View", resume_path(resume.id), method: :get, :class => "btn btn-outline-primary" %></td>
+          <td><%= link_to "delete", resume_path(resume.id), method: :delete, :class => "btn btn-outline-primary" %></td>
+        </tr>
+      <%end%>
+      </tbody>
+  </table>         
+<% else %>
+  <h1>No Resume Available!!</h1>   
+<%end%>    
 </div>

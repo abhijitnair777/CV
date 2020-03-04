@@ -1,5 +1,6 @@
 <div class="contentcontainer med left" style="margin-left: 15px;">
-<table>
+<% if current_user.projects.count > 0 %> 
+<table style = "width: 100%;">
  	<thead>
  		<tr>
  			<th> project_id </th>
@@ -21,4 +22,7 @@
     <%end%>
   </tbody>  	
 </table>
+<% else %>
+  <h1>No Project Available!!</h1>
+<%end%>
 </div>

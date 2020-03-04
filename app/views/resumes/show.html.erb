@@ -3,13 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-
   <title><%= current_user.name%></title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
   <meta name="keywords" content="" />
   <meta name="description" content="" />
-  
 </head>
 <body>
 
@@ -20,7 +17,6 @@
       <div class="yui-gc">
         <div class="yui-u first">
           <h1><%= current_user.name%></h1>
-          <h2>Web Designer, Director</h2>
         </div>
 
         <div class="yui-u">
@@ -101,7 +97,8 @@
             <% current_user.educations.each do |education| %>
             <div class="yui-u">
               <h2><%= education.institute_name %></h2>
-              <h3><%= education.qualification.qualification_type %> &mdash; <strong><%=education.percentage %> %</strong> </h3><br>
+              <h3><%= education.qualification.qualification_type %> &mdash; <strong><%=education.percentage %> %</strong> </h3>
+              <h3>Graduated in :<%= education.year_of_passing.year %></h3><br>
             </div>
 
             <% end %>

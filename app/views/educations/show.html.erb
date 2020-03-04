@@ -1,7 +1,8 @@
 <div class="contentcontainer med left" style="margin-left: 15px;">
-<table>
+<% if current_user.educations.count > 0 %> 
+  <table style = "width: 100%;">
   <thead>
-    <tr>
+    <tr >
       <th> Qualification Type </th>
       <th> Institute Name </th>
       <th> Year of Passing </th>
@@ -11,14 +12,17 @@
   <tbody>
     <% current_user.educations.all.each do |education| %>
       <tr>
-        <td><%= education.qualification.qualification_type%></td>
-        <td><%= education.institute_name%></td>
-        <td><%= education.year_of_passing%></td>
-        <td><%= education.percentage%></td>
+        <td><%= education.qualification.qualification_type %></td>
+        <td><%= education.institute_name %></td>
+        <td><%= education.year_of_passing.year %></td>
+        <td><%= education.percentage %></td>
 
         <td><%= link_to "Update", edit_education_path(current_user.id), method: :get, :class => "btn btn-outline-primary" %></td>
       </tr>
     <%end%>
-  </tbody>
-</table>
+    </tbody>
+  </table>    
+<% else %>
+  <h1>No Education Details Available!!</h1>
+<%end%>
 </div>

@@ -16,11 +16,10 @@
     <%= f.number_field :percentage%>
   </div>
 
-  <div class="small-6 columns">
-    </br><%= f.label :Year_Of_Passing%></br>
-   <!--  <%= select_date(Date.current, start_year: 2016, end_year: Date.current.year)%> -->
-   <%= date_select :date, :start_year => Date.current.year, :end_year => 1920 %>
-  </div>
+    <div class="field">
+      <%= f.label :Year_of_Passing %>
+      <%= f.date_field :year_of_passing, autocomplete: "dob" %><br/>
+    </div>
    <%= f.hidden_field :user_id, :value => current_user.id%>
 </div>
 </br><%= f.submit "Submit", class: 'button small radius' %>
