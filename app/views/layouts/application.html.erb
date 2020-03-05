@@ -12,6 +12,11 @@
   <body>
     <%= render "/layouts/background" %>
     <%= render "/layouts/homepage" %>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>  
     <%= yield %>
     <%= render "/layouts/footer" %>
   </body>

@@ -3,7 +3,7 @@
 <div class="contentcontainer med left" style="margin-left: 10px; margin-bottom: 10%;">
   <div class="form-inputs">
     <h3><%= f.label :Objective %><br></h3>
-    <%= f.text_field :objective %>
+    <%= f.text_area :objective, :cols => 40, :rows => 3 %>
     <%= f.hidden_field :user_id, :value => current_user.id%>
   </div>
 

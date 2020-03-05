@@ -33,4 +33,3 @@ class addFields {
 }
  
 window.addEventListener('turbolinks:load', () => new addFields() );
-

@@ -6,7 +6,7 @@
         <th> Resume_id </th>
         <th> Objective </th>
       </tr>
-    </thead>  
+    </thead>
     <tbody>
       <% current_user.resumes.all.each do |resume| %>
         <tr>
@@ -17,8 +17,8 @@
         </tr>
       <%end%>
       </tbody>
-  </table>         
+  </table>
 <% else %>
-  <h1>No Resume Available!!</h1>   
-<%end%>    
+  <h1>No Resume Available!!</h1>
+<%end%>
 </div>

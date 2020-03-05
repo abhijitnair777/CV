@@ -10,6 +10,7 @@ class EducationsController < ApplicationController
   def create
     @education = Education.new(education_params)
     if @education.save
+      flash[:notice] = "Education detail has been added."
       render :new
     else
       render json: @education.errors

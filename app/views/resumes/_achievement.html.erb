@@ -2,8 +2,7 @@
   
 <div class="field">
   <br><%= f.label :Achievement %><br>
-  <%= f.text_field :achievement_description, label: false %><br>
-  
+  <%= f.text_area :achievement_description, label: false , :cols => 25, :rows => 2%><br>
   <%= f.hidden_field :resume_id, :value => Resume.last.id%>
   <%= link_to 'Delete', '#', class: 'remove_record' %>
 </div>

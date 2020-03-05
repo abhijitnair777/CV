@@ -1,5 +1,6 @@
 <%= form_for @education do |f| %>
-<div class="contentcontainer med left" style="margin-left: 10px;">
+<div class="contentcontainer med left" style="margin-left: 12px;">
+  <div class="font-weight-bold">
   <p>
     <%=f.label :Qualification %><br>
     <%=f.select(:qualification_id, options_for_type) %>
@@ -17,11 +18,12 @@
   </div>
 
     <div class="field">
-      <%= f.label :Year_of_Passing %>
+      <%= f.label :Year_of_Passing %></br>
       <%= f.date_field :year_of_passing, autocomplete: "dob" %><br/>
     </div>
-   <%= f.hidden_field :user_id, :value => current_user.id%>
+   <%= f.hidden_field :user_id, :value => current_user.id%>  
 </div>
 </br><%= f.submit "Submit", class: 'button small radius' %>
+</div>
 </div>
 <% end %>
