@@ -17,7 +17,7 @@
         <td><%= project.description%></td>
         <td><%= project.url%></td>
         <td><%= link_to "Update", edit_project_path(project.id), method: :get, :class => "btn btn-outline-primary" %></td>
-        <td><%= link_to "Delete", edit_project_path(project.id), method: :delete, :class => "btn btn-outline-primary" %></td>
+        <td><%= link_to "Delete", project_path(project.id), method: :delete, :class => "btn btn-outline-primary" %></td>
       </tr>
     <%end%>
   </tbody>  	
