@@ -11,13 +11,13 @@
  	</thead>	
  	<tbody>
     <% current_user.projects.all.each do |project| %>
-      <tr>
+      <tr id="project_<%= project.id%>">
         <td><%= project.id%></td>
         <td><%= project.project_name%></td>
         <td><%= project.description%></td>
         <td><%= project.url%></td>
         <td><%= link_to "Update", edit_project_path(project.id), method: :get, :class => "btn btn-outline-primary" %></td>
-        <td><%= link_to "Delete", project_path(project.id), method: :delete, :class => "btn btn-outline-primary" %></td>
+        <td><%= link_to "Delete", project_path(project.id),remote: true, method: :delete, :class => "btn btn-outline-primary" %></td>
       </tr>
     <%end%>
   </tbody>  	

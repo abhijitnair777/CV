@@ -1,5 +1,5 @@
 <div class="contentcontainer med left" style="margin-left: 10px;">
-<% if current_user.resumes.count > 0 %>   
+<% if current_user.resumes.count > 0 %>
   <table style = "width: 100%;">
     <thead>
       <tr>
@@ -9,11 +9,12 @@
     </thead>
     <tbody>
       <% current_user.resumes.all.each do |resume| %>
-        <tr>
+        <tr id="resume_<%= resume.id%>">
           <td><%= resume.id%></td>
           <td><%= resume.objective%></td>
           <td><%= link_to "View", resume_path(resume.id), method: :get, :class => "btn btn-outline-primary" %></td>
-          <td><%= link_to "delete", resume_path(resume.id), method: :delete, :class => "btn btn-outline-primary" %></td>
+          <td><%= link_to "Edit", edit_resume_path(resume.id), :class => "btn btn-outline-primary" %></td>
+          <td><button><%= link_to "delete", resume_path(resume.id),remote: true, method: :delete, :class => "destroy btn btn-primary" %></button></td>
         </tr>
       <%end%>
       </tbody>

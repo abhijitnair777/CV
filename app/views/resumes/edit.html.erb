@@ -1,16 +1,1 @@
-<table>
-  <thead>
-    <tr>
-      <th> resume_id </th>
-      <th> Objective </th>
-    </tr>
-  </thead>  
-  <tbody>
-    <% current_user.resumes.all.each do |resume| %>
-      <tr>
-        <td><%= resume.id%></td>
-        <td><%= resume.objective%></td>
-      </tr>
-    <%end%>
-  </tbody>    
-</table>
+<%= render 'form' %>

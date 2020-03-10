@@ -1,7 +1,6 @@
 <div class="scroll">
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
 <%= stylesheet_link_tag "resumes"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
   <title><%= current_user.name%></title>
@@ -61,6 +60,7 @@
             <% end %>
           </div><!--// .yui-gf -->
 
+       <% if @resume.achievements.count > 0 %>
           <div class="yui-gf">
             <div class="yui-u first">
               <h2>Achievements</h2>
@@ -73,6 +73,7 @@
             </div>
           </div><!--// .yui-gf-->
           <% end %>
+        <%end%>
           <div class="yui-gf">
 
             <div class="yui-u first">
@@ -101,10 +102,8 @@
               <h3><%= education.qualification.qualification_type %> &mdash; <strong><%=education.percentage %> %</strong> </h3>
               <h3>Graduated in :<%= education.year_of_passing.year %></h3><br>
             </div>
-
             <% end %>
           </div>
-
         </div>
       </div>
     </div>

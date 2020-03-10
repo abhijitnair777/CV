@@ -8,20 +8,21 @@
       <th> Year of Passing </th>
       <th> Percentage </th>
     </tr>
-  </thead>  
+  </thead>
   <tbody>
     <% current_user.educations.all.each do |education| %>
-      <tr>
+      <tr id="education_<%= education.id%>">
         <td><%= education.qualification.qualification_type %></td>
         <td><%= education.institute_name %></td>
         <td><%= education.year_of_passing.year %></td>
         <td><%= education.percentage %></td>
-
-        <td><%= link_to "Update", edit_education_path(current_user.id), method: :get, :class => "btn btn-outline-primary" %></td>
+        <td><%= link_to "Update", edit_education_path(current_user.id), method: :get, :class => "btn btn-outline-primary" %>
+          <td><%= link_to "Delete", education_path(education.id), remote: true, method: :delete, :class => "btn btn-outline-primary" %></td>
+        </td>
       </tr>
     <%end%>
     </tbody>
-  </table>    
+  </table>
 <% else %>
   <h1>No Education Details Available!!</h1>
 <%end%>

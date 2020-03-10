@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end    
 
-  resources :hobbies
+  resource :hobbies, only: [:new, :create]
 
   resources :educations  
 end

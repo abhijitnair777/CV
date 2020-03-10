@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   def index
-    @resumes = Resume.all  
+    @resumes = Resume.all
   end
 
   def new
@@ -22,10 +22,26 @@ class ResumesController < ApplicationController
     @resume = Resume.find(params[:id])
   end
 
+  def edit
+    @resume = Resume.find(params[:id])
+  end
+
+  def update
+    @resume = Resume.find(params[:id])
+    if @resume.update_attributes(resume_params)
+      redirect_to resume_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @resume = Resume.find(params[:id])
     @resume.destroy
-    redirect_to view_user_resumes_resume_path
+    respond_to do |format|
+      format.js { }
+      format.html { redirect_to view_user_resumes_resume_path }
+    end
   end
 
   private

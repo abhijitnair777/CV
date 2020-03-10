@@ -1,4 +1,3 @@
-
 class removeFields {
     
     // This executes when the function is instantiated.

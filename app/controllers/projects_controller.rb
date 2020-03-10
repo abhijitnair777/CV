@@ -36,7 +36,10 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    redirect_to project_path(current_user)
+    respond_to do |format|
+      format.js { }
+      format.html { redirect_to project_path(current_user) }
+    end
   end
 
   private
