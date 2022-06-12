@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.all.long_title
   end
 
   def new
@@ -16,9 +16,9 @@ class ProjectsController < ApplicationController
     end
   end
   
-  def show   
+  def show
     @project = Project.find(params[:id])   
-  end   
+  end
   
   def edit
     @project = Project.find(params[:id])

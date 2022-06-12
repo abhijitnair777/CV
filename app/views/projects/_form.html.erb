@@ -1,0 +1,25 @@
+<%= form_for @project do |f| %>
+<div class="contentcontainer med left" style="margin-left: 10px;">
+  <div class="font-weight-bold">
+  <fieldset>
+    <h1>Project</h1>
+    <div class="field">
+      <div class="small-6 columns">
+        <br><%= f.label :Project %></br>
+        <%= f.text_field :project_name %>
+      </div>
+      <div class="small-6 columns">
+       <br> <%= f.label :Description %></br>
+        <%= f.text_area :description, :cols => 20, :rows => 4 %>
+      </div>
+      <div class="small-6 columns">
+       <br> <%= f.label :URL %></br>
+        <%= f.text_field :url %>
+      </div>
+      <%= f.hidden_field :user_id, :value => current_user.id%>
+    </div>
+    <br><%= f.submit "submit", class: 'button small radius' %>
+  </fieldset>
+</div>
+</div>
+<% end %>

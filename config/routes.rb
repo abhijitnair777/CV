@@ -11,11 +11,7 @@ Rails.application.routes.draw do
     end
   end 
   
-  resources :projects do
-    member do
-      delete :destroy
-    end
-  end    
+  resources :projects  
 
   resource :hobbies, only: [:new, :create]
 
